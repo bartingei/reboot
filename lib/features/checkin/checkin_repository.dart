@@ -44,6 +44,9 @@ class CheckInRepository {
     final query = _db.select(_db.checkIns)
       ..orderBy([
         (c) => OrderingTerm(expression: c.createdAt, mode: OrderingMode.desc),
+        // id tiebreaker: createdAt is second-precision, so several check-ins
+        // in the same second would otherwise order non-deterministically.
+        (c) => OrderingTerm(expression: c.id, mode: OrderingMode.desc),
       ])
       ..limit(limit);
     return query.watch();

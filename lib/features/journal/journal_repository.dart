@@ -15,6 +15,9 @@ class JournalRepository {
     final query = _db.select(_db.journalEntries)
       ..orderBy([
         (e) => OrderingTerm(expression: e.createdAt, mode: OrderingMode.desc),
+        // id is monotonic, so it breaks ties for entries written in the same
+        // clock-second (createdAt is second-precision) — keeps newest first.
+        (e) => OrderingTerm(expression: e.id, mode: OrderingMode.desc),
       ]);
     return query.watch();
   }
