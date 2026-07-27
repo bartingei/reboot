@@ -13,7 +13,7 @@ class SosScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final contacts = defaultSosContacts;
+    const contacts = defaultSosContacts;
     final hasExamples = contacts.any((c) => c.isExample);
 
     return Scaffold(

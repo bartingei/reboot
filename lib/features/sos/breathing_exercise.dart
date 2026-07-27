@@ -57,7 +57,7 @@ class _BreathingExerciseState extends State<BreathingExercise>
                   height: size,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: scheme.primary.withOpacity(0.25),
+                    color: scheme.primary.withValues(alpha: 0.25),
                     border: Border.all(color: scheme.primary, width: 2),
                   ),
                 ),
