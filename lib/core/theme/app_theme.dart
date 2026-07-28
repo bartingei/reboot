@@ -98,7 +98,9 @@ class RebootColors extends ThemeExtension<RebootColors> {
     cravingCalm: AppColors.sage600,
     cravingIntense: AppColors.ember700,
     surfaceRaised: AppColors.dusk0,
-    surfaceSunken: AppColors.dusk50,
+    // Not dusk50: that's the light scaffold color, and a sunken well has to
+    // stay visible when it sits directly on the page rather than in a card.
+    surfaceSunken: Color(0xFFEAEFED),
     hairline: Color(0x14000000),
   );
 
