@@ -3,7 +3,8 @@
 Recovery + growth habit-tracking mobile app.
 
 See [ARCHITECTURE.md](./ARCHITECTURE.md) for the full architecture, data
-model, and privacy design.
+model, and privacy design, and [DESIGN.md](./DESIGN.md) for the design
+system — palette, type scale, components, and the principles behind them.
 
 ## Getting started
 

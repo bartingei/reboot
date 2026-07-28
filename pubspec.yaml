@@ -4,7 +4,10 @@ publish_to: 'none'
 version: 0.1.0
 
 environment:
-  sdk: '>=3.3.0 <4.0.0'
+  # Dart 3.6 / Flutter 3.27 or newer: the design system uses Color.withValues
+  # (the withOpacity replacement) throughout.
+  sdk: '>=3.6.0 <4.0.0'
+  flutter: '>=3.27.0'
 
 dependencies:
   flutter:
