@@ -28,3 +28,27 @@ int computeStreak(List<DateTime> checkInTimes, {DateTime? now}) {
 }
 
 DateTime _dateOnly(DateTime dt) => DateTime(dt.year, dt.month, dt.day);
+
+/// The longest run of consecutive days with at least one check-in, anywhere
+/// in the history. Unlike [computeStreak] this looks at the whole record,
+/// so a badge earned from a past streak stays earned even after a setback —
+/// which matters for a recovery app.
+int computeLongestStreak(List<DateTime> checkInTimes) {
+  if (checkInTimes.isEmpty) return 0;
+
+  final days = checkInTimes.map(_dateOnly).toSet();
+  var longest = 0;
+
+  for (final day in days) {
+    // Only start counting at the beginning of a run.
+    if (days.contains(day.subtract(const Duration(days: 1)))) continue;
+    var cursor = day;
+    var run = 0;
+    while (days.contains(cursor)) {
+      run++;
+      cursor = cursor.add(const Duration(days: 1));
+    }
+    if (run > longest) longest = run;
+  }
+  return longest;
+}

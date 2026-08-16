@@ -23,4 +23,11 @@ class StreaksRepository {
           .toList();
     });
   }
+
+  /// Every check-in timestamp across both pillars. Used by the Wins screen
+  /// to derive earned badges (longest-ever streak) and the total count.
+  Stream<List<DateTime>> watchAllCheckInDates() {
+    final query = _db.select(_db.checkIns);
+    return query.watch().map((rows) => rows.map((r) => r.createdAt).toList());
+  }
 }
