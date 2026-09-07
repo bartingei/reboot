@@ -49,6 +49,10 @@ enum Pillar { recovery, growth }
 class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_openConnection());
 
+  /// Opens the database against a caller-provided executor. Used by tests
+  /// to run against an in-memory SQLite instance without touching disk.
+  AppDatabase.forTesting(super.executor);
+
   @override
   int get schemaVersion => 1;
 }
